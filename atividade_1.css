@@ -25,6 +25,7 @@
   header img {
     max-width: 100px; 
     margin-right: 15px;
+    border-radius: 50%;
     vertical-align: middle; 
   }
   

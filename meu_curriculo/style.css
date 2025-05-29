@@ -1,94 +1,69 @@
-
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f0f4f8;
-    color: #333;
-  }
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8;
+  color: #333;
+}
   
-  header {
-    background-color: #005f73;
-    color: white;
-    text-align: center;
-    padding: 30px 10px;
-  }
+header {
+  background-color: green;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  align-items: center; 
+  justify-content: center;
+}
+
+header img {
+  max-width: 130px;
+  height: auto;
+  border-radius: 5px; 
+}
+
+section {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
   
-  header img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 15px;
-  }
+h2 {
+  color: rgb(38, 219, 53);
+}
   
-  section {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
+ul {
+  list-style-type:square;
+  padding-left: 20px;
+}
   
-  h2 {
-    color: #005f73;
-  }
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: green;
+  color: white;
+}
   
-  ul {
-    list-style-type: square;
-    padding-left: 20px;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+}
   
-  footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #002e2e;
-    color: white;
-  }
+form input,
+form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
   
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  form input,
-  form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  form button {
-    background-color: #005f73;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #0a9396;
-  }
-  
-  a {
-    color: #005f73;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #94d2bd;
-  }
-  
-  @media (max-width: 600px) {
-    header, section {
-      padding: 15px;
-    }
-  
-    header img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-  
+form button {
+  background-color: rgb(0, 107, 0);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

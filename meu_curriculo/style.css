@@ -83,7 +83,7 @@ a:hover {
     padding: 20px;
   }
 
-  header h1 {
+  header h2 {
     font-size: 1.6em;
   }
 
@@ -107,7 +107,7 @@ a:hover {
 }
 
 @media (max-width: 480px) {
-  header h1 {
+  header h2 {
     font-size: 1.4em;
   }
 

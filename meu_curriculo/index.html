@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meu Currículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <header>
     <h1>Rayka Alessandra Lemos Garcia</h1>
-    <img src="foto.jpeg">
+    <img src="foto.jpeg" alt="Foto de Rayka Alessandra Lemos Garcia" />
   </header>
 
   <section id="sobre-mim">
@@ -21,16 +22,15 @@
   <section id="formacao">
     <h2>Formação Acadêmica</h2>
     <ul>
-      <li>Ensino Fundamental - Completo (2014- 2022)</li>
-      <li>Ensino Médio Técnico Integrado em Informática (em andamento)- Instituto Federal do Rio Grande do Norte</li>
+      <li>Ensino Fundamental - Completo (2014 - 2022)</li>
+      <li>Ensino Médio Técnico Integrado em Informática (em andamento) - Instituto Federal do Rio Grande do Norte</li>
     </ul>
   </section>
 
   <section id="experiencia">
     <h2>Experiência Profissional</h2>
     <ul>
-      <li>Atualmente em busca de minha primeira experiência profissional, com interesse em aplicar
-        meus conhecimentos em informática e aprender com novas oportunidades de trabalho.</li>
+      <li>Atualmente em busca de minha primeira experiência profissional, com interesse em aplicar meus conhecimentos em informática e aprender com novas oportunidades de trabalho.</li>
     </ul>
   </section>
 
@@ -52,14 +52,14 @@
 
   <section id="formulario">
     <h2>Entre em Contato</h2>
-    <form>
-      <label >Nome:</label>
+    <form action="#" method="post">
+      <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required />
       
-      <label >Email:</label>
+      <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
       
-      <label >Comentário:</label>
+      <label for="comentario">Comentário:</label>
       <textarea id="comentario" name="comentario" rows="4" required></textarea>
       
       <button type="submit">Enviar</button>

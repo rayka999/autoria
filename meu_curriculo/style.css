@@ -1,3 +1,4 @@
+/* Fonte principal */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -5,22 +6,27 @@ body {
   background: #f0f4f8;
   color: #333;
 }
-  
+
+/* Header com flexbox para centralizar conteúdo */
 header {
   background-color: green;
   color: white;
   text-align: center;
   padding: 30px;
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 header img {
   max-width: 130px;
   height: auto;
-  border-radius: 5px; 
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
+/* Seções do currículo */
 section {
   padding: 20px;
   margin: 20px auto;
@@ -29,36 +35,48 @@ section {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-  
+
+/* Títulos das seções */
 h2 {
   color: rgb(38, 219, 53);
+  margin-bottom: 15px;
 }
-  
+
+/* Lista com marcadores quadrados */
 ul {
-  list-style-type:square;
+  list-style-type: square;
   padding-left: 20px;
 }
-  
+
+/* Rodapé */
 footer {
   text-align: center;
   padding: 15px;
   background-color: green;
   color: white;
+  margin-top: 40px;
 }
-  
+
+/* Formulário */
 form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
-  
+
+form label {
+  font-weight: bold;
+}
+
 form input,
 form textarea {
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
 }
-  
+
 form button {
   background-color: rgb(0, 107, 0);
   color: white;
@@ -66,8 +84,16 @@ form button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
+/* Hover no botão */
+form button:hover {
+  background-color: #026602;
+}
+
+/* Estilo para links */
 a {
   color: green;
   text-decoration: none;
@@ -78,12 +104,13 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Responsividade para tablets e smartphones */
 @media (max-width: 768px) {
   header {
     padding: 20px;
   }
 
-  header h2 {
+  header h1 {
     font-size: 1.6em;
   }
 
@@ -97,17 +124,14 @@ a:hover {
   }
 
   form input,
-  form textarea {
-    font-size: 1em;
-  }
-
+  form textarea,
   form button {
     font-size: 1em;
   }
 }
 
 @media (max-width: 480px) {
-  header h2 {
+  header h1 {
     font-size: 1.4em;
   }
 
@@ -117,10 +141,7 @@ a:hover {
   }
 
   form input,
-  form textarea {
-    font-size: 0.9em;
-  }
-
+  form textarea,
   form button {
     font-size: 0.9em;
   }

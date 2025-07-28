@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gatopedia - Página Inicial</title>
+  <title>Catpedia - Home Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
@@ -27,80 +27,80 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Gatopedia</a>
+      <a class="navbar-brand" href="#">Catpedia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#quem-somos">Quem somos?</a>
+            <a class="nav-link" href="#about-us">Who We Are?</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#cadastro">Formulário para Cadastro</a>
+            <a class="nav-link" href="#signup">Signup Form</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pag_secundaria.html">Raças de Gatos</a>
+            <a class="nav-link" href="pag_secundaria.html">Cat Breeds</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Seção Quem Somos -->
-  <div class="container my-5" id="quem-somos">
+  <!-- About Us Section -->
+  <div class="container my-5" id="about-us">
     <div class="row g-5">
       <div class="col-md-6">
         <div class="card shadow-sm">
-          <img src="https://cdn2.thecatapi.com/images/6qi.jpg" class="card-img-top img-fluid" alt="Filhote de gato fofo" />
+          <img src="https://cdn2.thecatapi.com/images/6qi.jpg" class="card-img-top img-fluid" alt="Cute kitten" />
           <div class="card-body">
-            <h5 class="card-title">Quem somos?</h5>
+            <h5 class="card-title">Who We Are?</h5>
             <p class="card-text">
-              Somos apaixonados por gatos! A <strong>Gatopedia</strong> é um espaço dedicado a compartilhar curiosidades, raças e cuidados com esses felinos maravilhosos.
-              Navegue pelo nosso site e descubra tudo sobre o mundo dos gatos.
+              We're cat lovers! <strong>Catpedia</strong> is a space dedicated to sharing curiosities, breeds, and care tips for these amazing felines.
+              Browse our site and discover everything about the world of cats.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Seção Formulário -->
-      <div class="col-md-6" id="cadastro">
+      <!-- Signup Form Section -->
+      <div class="col-md-6" id="signup">
         <div class="p-4 border rounded shadow-sm">
-          <h3>Formulário de Interesse</h3>
-          <form onsubmit="event.preventDefault(); new bootstrap.Modal(document.getElementById('modalSucesso')).show();">
+          <h3>Interest Form</h3>
+          <form onsubmit="event.preventDefault(); new bootstrap.Modal(document.getElementById('successModal')).show();">
             <div class="mb-3">
-              <label for="nome" class="form-label">Seu Nome</label>
-              <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required />
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Seu E-mail</label>
-              <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required />
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar Interesse</button>
+            <button type="submit" class="btn btn-primary">Submit Interest</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal de Sucesso -->
-  <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="modalSucessoLabel" aria-hidden="true">
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Cadastro Realizado</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          <h5 class="modal-title">Form Submitted</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Obrigado pelo seu interesse! Entraremos em contato em breve.
+          Thank you for your interest! We’ll get in touch with you soon.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Rodapé -->
+  <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    &copy; 2025 Gatopedia - Todos os direitos reservados.
+    &copy; 2025 Catpedia - All rights reserved.
   </footer>
 
   <!-- Scripts -->

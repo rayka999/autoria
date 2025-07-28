@@ -1,40 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gatopedia - Buscar Raças</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Catpedia - Browse Breeds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
-      padding-bottom: 80px;
+      padding-bottom: 100px;
     }
     footer {
       position: fixed;
       bottom: 0;
       width: 100%;
     }
+    .carousel {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .carousel-item img {
+      width: 100%;
+      max-height: 400px;
+      height: auto;
+      object-fit: contain;
+      background-color: #000;
+      border-radius: 0.25rem;
+    }
   </style>
 </head>
 <body>
 
-  <div class="container my-5">
-    <h1 class="text-center mb-4">Raças de Gatos</h1>
+  <!-- Modal (Welcome) -->
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="welcomeModalLabel">Welcome!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Browse different cat breeds and discover more about your favorite felines!
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Catpedia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="pag_principal.html">Back to Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Cat Breeds</h1>
+
+    <!-- Form -->
     <div class="mb-3">
-      <label for="raça" class="form-label">Escolha uma raça</label>
-      <select class="form-select" id="raça">
-        <option selected disabled>Selecione uma raça...</option>
+      <label for="breedSelect" class="form-label">Choose a breed</label>
+      <select class="form-select" id="breedSelect">
+        <option selected disabled>Select a breed...</option>
       </select>
     </div>
 
     <div class="text-center">
-      <button class="btn btn-primary" onclick="mostrar_raça()">Mostrar Raça</button>
+      <button class="btn btn-primary" onclick="showBreed()">Show Breed</button>
     </div>
 
-    <div id="saida" class="mt-5"></div>
+    <!-- Result -->
+    <div id="output" class="mt-5"></div>
 
+    <!-- Back Button -->
     <div class="mt-4 text-center">
-      <a href="pag_principal.html" class="btn btn-outline-secondary">Voltar à Página Principal</a>
+      <a href="index.html" class="btn btn-outline-secondary">Back to Home Page</a>
     </div>
   </div>
 
@@ -43,74 +92,93 @@
     <div id="toastInfo" class="toast align-items-center text-bg-info border-0" role="alert">
       <div class="d-flex">
         <div class="toast-body">
-          Informação carregada com sucesso!
+          Breed information loaded successfully!
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
     </div>
   </div>
 
-  <!-- Rodapé -->
+  <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    &copy; 2025 Gatopedia - Todos os direitos reservados.
+    &copy; 2025 Catpedia - All rights reserved.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    const url_nome = `https://api.thecatapi.com/v1/breeds`;
+    // Show welcome modal on page load
+    window.addEventListener('load', () => {
+      const welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+      welcomeModal.show();
+    });
 
-    fetch(url_nome)
+    const breedURL = `https://api.thecatapi.com/v1/breeds`;
+
+    // Load breeds into dropdown
+    fetch(breedURL)
       .then(response => response.json())
-      .then(names => {
-        let select = document.getElementById("raça");
-        for (let name of names) {
-          let novaopcao = new Option(name.name, name.id);
-          select.options[select.options.length] = novaopcao;
-        }
+      .then(data => {
+        const select = document.getElementById("breedSelect");
+        data.forEach(breed => {
+          const option = new Option(breed.name, breed.id);
+          select.add(option);
+        });
       });
 
-    function mostrar_raça() {
-      let idRaça = document.getElementById('raça').value;
-      let url_inf = `https://api.thecatapi.com/v1/breeds`;
+    function showBreed() {
+      const breedId = document.getElementById("breedSelect").value;
+      const output = document.getElementById("output");
+      output.innerHTML = "";
 
-      fetch(url_inf)
-        .then(response => response.json())
-        .then(dados => {
-          let resultado = document.getElementById("saida");
-          resultado.innerHTML = '';
+      fetch(breedURL)
+        .then(res => res.json())
+        .then(data => {
+          const breed = data.find(b => b.id === breedId);
+          if (!breed) return;
 
-          for (let dado of dados) {
-            if (dado.id === idRaça) {
-              let div = document.createElement("div");
-              div.className = "card mb-4 p-4 shadow-sm";
+          const card = document.createElement("div");
+          card.className = "card p-4 shadow-sm";
 
-              div.innerHTML = `
-                <h4 class="card-title text-primary">${dado.name}</h4>
-                <p><strong>Temperamento:</strong> ${dado.temperament}</p>
-                <p><strong>Origem:</strong> ${dado.origin}</p>
-                <p><strong>Descrição:</strong> ${dado.description}</p>
-                <p><strong>Expectativa de vida:</strong> ${dado.life_span} anos</p>
-              `;
+          card.innerHTML = `
+            <h4 class="card-title text-primary">${breed.name}</h4>
+            <p><strong>Temperament:</strong> ${breed.temperament}</p>
+            <p><strong>Origin:</strong> ${breed.origin}</p>
+            <p><strong>Description:</strong> ${breed.description}</p>
+            <p><strong>Life Expectancy:</strong> ${breed.life_span} years</p>
+            <div id="carouselImages" class="carousel slide mt-4" data-bs-ride="carousel">
+              <div class="carousel-inner" id="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="text-center text-muted">Loading images...</div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          `;
 
-              fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${dado.id}`)
-                .then(response => response.json())
-                .then(imagens => {
-                  imagens.forEach(fotoData => {
-                    let img = document.createElement('img');
-                    img.src = fotoData.url;
-                    img.className = "img-fluid rounded mt-3";
-                    img.alt = `Imagem da raça ${dado.name}`;
-                    div.appendChild(img);
-                  });
-                });
+          output.appendChild(card);
 
-              resultado.appendChild(div);
+          // Load images
+          fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breed.id}&limit=5`)
+            .then(res => res.json())
+            .then(images => {
+              const carouselInner = document.getElementById("carousel-inner");
+              carouselInner.innerHTML = "";
+              images.forEach((img, index) => {
+                const div = document.createElement("div");
+                div.className = "carousel-item" + (index === 0 ? " active" : "");
+                div.innerHTML = `<img src="${img.url}" class="d-block w-100 rounded" alt="${breed.name} image" />`;
+                carouselInner.appendChild(div);
+              });
+            });
 
-              const toast = new bootstrap.Toast(document.getElementById('toastInfo'));
-              toast.show();
-            }
-          }
+          // Show toast
+          const toast = new bootstrap.Toast(document.getElementById("toastInfo"));
+          toast.show();
         });
     }
   </script>
